@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../UserContext/UserContext";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userLogOut } = useContext(AuthContext);
+
+  const handleLogOut = ()=>{
+    userLogOut()
+    .then(()=>{})
+    .catch(err=> console.log(err))
+  }
 
   const hiddenRoute = {
     menuItems: (
@@ -53,7 +59,7 @@ const Header = () => {
           <li>{user?.uid && hiddenRoute.menuItems}</li>
           <li>
             {!user?.uid && userLogingRoute.menuItems}
-          {user?.uid && <Link>Log out</Link>}
+          {user?.uid && <Link onClick={handleLogOut}>Log out</Link>}
           </li>
           </ul>
         </div>
@@ -72,7 +78,7 @@ const Header = () => {
           <li>{user?.uid && hiddenRoute.menuItems}</li>
           <li>
             {!user?.uid && userLogingRoute.menuItems}
-          {user?.uid && <Link>Log out</Link>}
+          {user?.uid && <Link onClick={handleLogOut}>Log out</Link>}
 
           </li>
         </ul>

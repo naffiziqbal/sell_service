@@ -7,7 +7,6 @@ const Login = () => {
     const handleForm = e => {
         e.preventDefault();
         const form = e.target;
-        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email,password);
