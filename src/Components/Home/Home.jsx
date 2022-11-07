@@ -11,10 +11,12 @@ const Home = () => {
       {services.map((service) => (
         <ServiceItem key={service.id} service={service} />
       ))}
-      <Link to={"services"}>
+      <div className = 'text-center'>
+      <Link to={"services"} >
         {" "}
         <button className="btn btn-primary">See All</button>
       </Link>
+      </div>
     </div>
   );
 };

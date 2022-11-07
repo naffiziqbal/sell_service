@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import ServiceItemOnServicePage from './ServiceItemOnServicePage/ServiceItemOnServicePage';
 
 const Services = () => {
     const {services} = useLoaderData()
@@ -7,7 +8,7 @@ const Services = () => {
     return (
         <div>
             {
-                
+                services.map(service => <ServiceItemOnServicePage key={service._id} service={service}/>)
             }
         </div>
     );
