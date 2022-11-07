@@ -18,6 +18,8 @@ const SignUp = () => {
             const user = result.user;
             handleUserInfo(name, photoUrl)
             console.log(user)
+        form.reset()
+
         })
         .catch(err => console.log(err))
         
