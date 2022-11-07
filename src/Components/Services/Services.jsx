@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import ServiceItemOnServicePage from './ServiceItemOnServicePage/ServiceItemOnServicePage';
+import ServiceItem from '../Shared/ServiceItem/ServiceItem';
 
 const Services = () => {
     const {services} = useLoaderData()
@@ -8,7 +8,7 @@ const Services = () => {
     return (
         <div>
             {
-                services.map(service => <ServiceItemOnServicePage key={service._id} service={service}/>)
+                services.map(service => <ServiceItem key={service._id} service={service}/>)
             }
         </div>
     );

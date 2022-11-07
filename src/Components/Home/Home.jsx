@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import ServiceItem from "./ServiceItem/ServiceItem";
+import ServiceItem from "../Shared/ServiceItem/ServiceItem";
 
 const Home = () => {
   const { services } = useLoaderData();
