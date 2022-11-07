@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import SignUpImage from "../../assets/Child adoption-rafiki.png";
+import { AuthContext } from "../../UserContext/UserContext";
 
 const SignUp = () => {
+    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const handleForm = e => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photoUrl = form.url.value;
+        console.log(email,password, name);
+        createUser(email,password)
+        .then(result =>{
+            const user = result.user;
+            handleUserInfo(name, photoUrl)
+            console.log(user)
+        })
+        .catch(err => console.log(err))
+        
+    }
+
+    const handleUserInfo =(name, photoUrl)=>{
+        const profile = {
+            displayName : name,
+            photoURL : photoUrl
+        }
+        updateUserProfile(profile)
+        .then(()=> {})
+        .catch(err => console.log(err))
+    }
   return (
     <div>
       <div className="hero min-h-screen w-full bg-base-200">
@@ -13,7 +42,7 @@ const SignUp = () => {
             </h1>
           </div>
           <div className="card flex-shrink-0 w-1/2  shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form className="card-body" onSubmit={handleForm}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -22,6 +51,17 @@ const SignUp = () => {
                   type="name"
                   placeholder="Enter Your Name"
                   name="name"
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Update Your Profile Picture</span>
+                </label>
+                <input
+                  type="url"
+                  placeholder="Enter URL"
+                  name="url"
                   className="input input-bordered"
                 />
               </div>

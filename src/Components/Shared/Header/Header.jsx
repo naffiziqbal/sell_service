@@ -72,11 +72,13 @@ const Header = () => {
           <li>{user?.uid && hiddenRoute.menuItems}</li>
           <li>
             {!user?.uid && userLogingRoute.menuItems}
+          {user?.uid && <Link>Log out</Link>}
+
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+        {user?.uid && user.displayName} <img className="w-12 rounded-full mx-4" src= {user?.uid && user.photoURL } alt="" />
       </div>
     </div>
   );
