@@ -4,7 +4,7 @@ import SignUpImage from "../../assets/Child adoption-rafiki.png";
 import { AuthContext } from "../../UserContext/UserContext";
 
 const SignUp = () => {
-    const {createUser, updateUserProfile} = useContext(AuthContext);
+    const {createUser, updateUserProfile, googleLogIn} = useContext(AuthContext);
     const handleForm = e => {
         e.preventDefault();
         const form = e.target;
@@ -24,6 +24,14 @@ const SignUp = () => {
         .catch(err => console.log(err))
         
     }
+    const handleGoogleLogIn=()=>{
+        googleLogIn()
+        .then(res => {
+            const user = res.user;
+            console.log(user)
+        })
+        .catch(err=>console.log(err))
+      }
 
     const handleUserInfo =(name, photoUrl)=>{
         const profile = {
@@ -100,7 +108,7 @@ const SignUp = () => {
               </div>
             </form>
             <div className="socialLogIn text-center rounded-b-xl  border-gray-300 border">
-              <button className="w-full p-5 hover:bg-slate-400 hover:text-white hover:rounded-b-xl duration-300 ">
+              <button className="w-full p-5 hover:bg-slate-400 hover:text-white hover:rounded-b-xl duration-300 "onClick={handleGoogleLogIn}>
                 Log in Using Google
               </button>
             </div>

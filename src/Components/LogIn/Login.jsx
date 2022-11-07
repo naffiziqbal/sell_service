@@ -4,7 +4,7 @@ import SignUpImage from "../../assets/Child adoption-rafiki.png";
 import { AuthContext } from "../../UserContext/UserContext";
 
 const Login = () => {
-    const {logInUser} = useContext(AuthContext);
+    const {logInUser, googleLogIn} = useContext(AuthContext);
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -20,6 +20,14 @@ const Login = () => {
         
     })
   };
+  const handleGoogleLogIn=()=>{
+    googleLogIn()
+    .then(res => {
+        const user = res.user;
+        console.log(user)
+    })
+    .catch(err=>console.log(err))
+  }
   return (
     <div>
       <div className="hero min-h-screen w-full bg-base-200">
@@ -66,7 +74,7 @@ const Login = () => {
               </div>
             </form>
             <div className="socialLogIn text-center rounded-b-xl  border-gray-300 border">
-              <button className="w-full p-5 hover:bg-slate-400 hover:text-white hover:rounded-b-xl duration-300 ">
+              <button className="w-full p-5 hover:bg-slate-400 hover:text-white hover:rounded-b-xl duration-300 " onClick={handleGoogleLogIn}>
                 Log in Using Google
               </button>
             </div>
