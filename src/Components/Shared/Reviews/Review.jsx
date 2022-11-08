@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../UserContext/UserContext";
 import Swal from "sweetalert2";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 const Review = ({ review }) => {
   const { user } = useContext(AuthContext);
@@ -28,9 +29,13 @@ const Review = ({ review }) => {
         }
       });
   };
+  const showUpdateDelBtn = (e) => {
+    console.log("he");
+    <span className="toast toast-end"></span>;
+  };
 
   return (
-    <div className="flex items-center justify-between border border-gray-200 rounded h-96">
+    <div className="flex flex-col items-center justify-between sm:flex-col md:flex-row  border border-gray-200 rounded">
       <div className="py-5 flex flex-nowrap items-center justify-between">
         <span className="ml-2">
           <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
@@ -40,12 +45,14 @@ const Review = ({ review }) => {
         </span>
         <span className="ml-2">:{reviewMessage?.slice(0, 100)}</span>
       </div>
-      <span>
-        <button className="btn mr-3">Update</button>
-        <button className="btn mr-3" onClick={() => handleDelete(_id)}>
-          Del
-        </button>
-      </span>
+      <div className="">
+        <span className="">
+          <button className=" mr-3">Update</button>
+          <button className=" mr-3" onClick={() => handleDelete(_id)}>
+            Del
+          </button>
+        </span>
+      </div>
     </div>
   );
 };

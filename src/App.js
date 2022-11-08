@@ -9,6 +9,7 @@ import ServiceDetails from './Components/Services/ServiceDetails/ServiceDetails'
 import Myreviews from './Components/PrivateRoute/MyReviews/Myreviews';
 import AddService from './Components/PrivateRoute/AddService/AddService';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Blog from './Components/Blog/Blog';
 
 function App() {
   const router = createBrowserRouter([
@@ -19,6 +20,7 @@ function App() {
         { path: '/services/:id', element: <ServiceDetails />, loader: ({ params }) => fetch(`https://cinemawala.vercel.app/services/${params.id}`) },
         { path: '/signup', element: <SignUp /> },
         { path: '/login', element: <Login /> },
+        { path: '/blog', element: <Blog /> },
         { path: '/userreviews', element: <PrivateRoute><Myreviews /></PrivateRoute> },
         { path: '/addservice', element: <PrivateRoute><AddService /></PrivateRoute> },
       ]

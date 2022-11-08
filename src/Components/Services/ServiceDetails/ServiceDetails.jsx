@@ -2,16 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../UserContext/UserContext";
 import Review from "../../Shared/Reviews/Review";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import 'react-photo-view/dist/react-photo-view.css';
+import "react-photo-view/dist/react-photo-view.css";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const { _id, title, img, description, price } = useLoaderData();
-  
-  const [reviews, setReviews] = useState([]);
 
+  const [reviews, setReviews] = useState([]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -41,12 +40,12 @@ const ServiceDetails = () => {
       .then((data) => {
         if (data?.acknowledged) {
           Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Your Service Has been Posted',
+            position: "top-end",
+            icon: "success",
+            title: "Your Service Has been Posted",
             showConfirmButton: false,
-            timer: 2500
-          })
+            timer: 2500,
+          });
           form.reset();
         }
       })
@@ -65,12 +64,12 @@ const ServiceDetails = () => {
       <div className="service_details ">
         <h3 className="text-3xl"> Service Details</h3>
         <PhotoProvider>
-      <div className="">
-          <PhotoView src={img}>
-            <img src={img} alt="" />
-          </PhotoView>
-      </div>
-    </PhotoProvider>
+          <div className="">
+            <PhotoView src={img}>
+              <img src={img} alt="" />
+            </PhotoView>
+          </div>
+        </PhotoProvider>
         <p className="text-xl">
           <strong>Services Details</strong> {title}
         </p>
@@ -130,11 +129,13 @@ const ServiceDetails = () => {
             ))}
           </div>
         </div>
-      )} 
+      )}
       <div className="">
-      {
-        !user?.uid && <div className="text-3xl  text-center p-5 underline"><Link to ="/login">Please Log In To Give Or See Review</Link></div>
-      }
+        {!user?.uid && (
+          <div className="text-3xl  text-center p-5 underline">
+            <Link to="/login">Please Log In To Give Or See Review</Link>
+          </div>
+        )}
       </div>
     </div>
   );

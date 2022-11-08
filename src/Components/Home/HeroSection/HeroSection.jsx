@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -14,7 +15,9 @@ const HeroSection = () => {
             <p className="mb-5">
               A Professional Photographer Who Captures Time and Live in Moment
             </p>
-            <button className="btn btn-primary">Blog</button>
+            <Link to={"/blog"}>
+              <button className="btn btn-primary">Blog</button>
+            </Link>
           </div>
         </div>
       </div>

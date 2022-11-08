@@ -5,18 +5,17 @@ import { AuthContext } from "../../../UserContext/UserContext";
 const Header = () => {
   const { user, userLogOut } = useContext(AuthContext);
 
-  const handleLogOut = ()=>{
+  const handleLogOut = () => {
     userLogOut()
-    .then(()=>{})
-    .catch(err=> console.log(err))
-  }
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
 
   const hiddenRoute = {
     menuItems: (
       <>
         <Link to="/addservice">Add Services</Link>
         <Link to="/userreviews">My Reviews</Link>
-        
       </>
     ),
   };
@@ -52,17 +51,20 @@ const Header = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-          <li>
-            <Link to={"/"}>Home</Link>
-          </li>
-          <li>
-            <Link to={"/services"}>Services</Link>
-          </li>
-          <li>{user?.uid && hiddenRoute.menuItems}</li>
-          <li>
-            {!user?.uid && userLogingRoute.menuItems}
-          {user?.uid && <Link onClick={handleLogOut}>Log out</Link>}
-          </li>
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link to={"/services"}>Services</Link>
+            </li>
+            <li>
+              <Link to={"/blog"}>Blog</Link>
+            </li>
+            <li>{user?.uid && hiddenRoute.menuItems}</li>
+            <li>
+              {!user?.uid && userLogingRoute.menuItems}
+              {user?.uid && <Link onClick={handleLogOut}>Log out</Link>}
+            </li>
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
@@ -76,17 +78,22 @@ const Header = () => {
           </li>
           <li>
             <Link to={"/services"}>Services</Link>
+            <Link to={"/blog"}>Blog</Link>
           </li>
           <li>{user?.uid && hiddenRoute.menuItems}</li>
           <li>
             {!user?.uid && userLogingRoute.menuItems}
-          {user?.uid && <Link onClick={handleLogOut}>Log out</Link>}
-
+            {user?.uid && <Link onClick={handleLogOut}>Log out</Link>}
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        {user?.uid && user.displayName} <img className="w-12 rounded-full mx-4" src= {user?.uid && user.photoURL } alt="" />
+        {user?.uid && user.displayName}{" "}
+        <img
+          className="w-12 rounded-full mx-4"
+          src={user?.uid && user.photoURL}
+          alt=""
+        />
       </div>
     </div>
   );
