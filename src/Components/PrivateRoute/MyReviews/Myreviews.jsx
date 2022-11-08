@@ -15,7 +15,7 @@ const Myreviews = () => {
       .catch((err) => console.log(err));
   }, [user?.email]);
   return (
-    <div>
+    <div className="h-screen">
       {reviews.map((review) => (
         <Review review={review} key={review._id} />
       ))}

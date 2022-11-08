@@ -30,7 +30,7 @@ const Review = ({ review }) => {
   };
 
   return (
-    <div className="flex items-center justify-between border border-gray-200 rounded ">
+    <div className="flex items-center justify-between border border-gray-200 rounded h-96">
       <div className="py-5 flex flex-nowrap items-center justify-between">
         <span className="ml-2">
           <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
