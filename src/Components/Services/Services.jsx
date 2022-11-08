@@ -10,7 +10,9 @@ const Services = () => {
             {
                 services.map(service => <ServiceItem key={service._id} service={service}/>)
             }
+            <p>Service</p>
         </div>
+
     );
 };
 

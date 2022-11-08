@@ -9,11 +9,10 @@ const Home = () => {
   return (
     <div>
       {services.map((service) => (
-        <ServiceItem key={service.id} service={service} />
+        <ServiceItem key={service._id} service={service} />
       ))}
       <div className = 'text-center'>
-      <Link to={"services"} >
-        {" "}
+      <Link to={"/services"} >
         <button className="btn btn-primary">See All</button>
       </Link>
       </div>
