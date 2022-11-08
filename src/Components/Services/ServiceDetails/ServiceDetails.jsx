@@ -2,7 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../UserContext/UserContext";
 import Review from "../../Shared/Reviews/Review";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import 'react-photo-view/dist/react-photo-view.css';
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
@@ -62,7 +64,13 @@ const ServiceDetails = () => {
     <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1">
       <div className="service_details ">
         <h3 className="text-3xl"> Service Details</h3>
-        <img src={img} alt="" />
+        <PhotoProvider>
+      <div className="">
+          <PhotoView src={img}>
+            <img src={img} alt="" />
+          </PhotoView>
+      </div>
+    </PhotoProvider>
         <p className="text-xl">
           <strong>Services Details</strong> {title}
         </p>
