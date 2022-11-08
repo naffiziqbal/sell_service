@@ -6,14 +6,20 @@ const Review = ({ review }) => {
 
   const { phone, email, reviewrName, reviewMessage } = review;
   return (
-    <div className="border border-gray-200 rounded py-5 flex flex-nowrap items-center">
-      <span className="ml-2">
-        <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
-      </span>{" "}
-      <span className="text-lg ml-2">
-        <strong>{!reviewrName ? user?.displayName : reviewrName}</strong>
+    <div className="flex items-center justify-between border border-gray-200 rounded ">
+      <div className="py-5 flex flex-nowrap items-center justify-between">
+        <span className="ml-2">
+          <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
+        </span>{" "}
+        <span className="text-lg ml-2">
+          <strong>{!reviewrName ? user?.displayName : reviewrName}</strong>
+        </span>
+        <span className="ml-2">:{reviewMessage?.slice(0, 100)}</span>
+      </div>
+      <span>
+        <button className="btn mr-3">Update</button>
+        <button className="btn mr-3">Del</button>
       </span>
-      <span className="ml-2">:{reviewMessage?.slice(0, 100)}</span>
     </div>
   );
 };
