@@ -66,7 +66,7 @@ const Header = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          CameraWala
+          CinemaWala
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
