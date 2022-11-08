@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../UserContext/UserContext";
 import Review from "../../Shared/Reviews/Review";
+import Swal from 'sweetalert2'
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
@@ -34,6 +35,13 @@ const ServiceDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data?.acknowledged) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your Service Has been Posted',
+            showConfirmButton: false,
+            timer: 2500
+          })
           form.reset();
         }
       })

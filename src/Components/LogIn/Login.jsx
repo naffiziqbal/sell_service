@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SignUpImage from "../../assets/Child adoption-rafiki.png";
 import { AuthContext } from "../../UserContext/UserContext";
 
 const Login = () => {
     const {logInUser, googleLogIn} = useContext(AuthContext);
+    const navigate = useNavigate()
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -16,6 +17,7 @@ const Login = () => {
     .then(result => {
         const user = result.user;
         console.log(user);
+        navigate('/')
         form.reset()
         
     })

@@ -36,6 +36,10 @@ const userLogOut =()=>{
   const updateUserProfile = (profile)=>{
     return updateProfile(auth.currentUser, profile)
   }
+
+
+
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

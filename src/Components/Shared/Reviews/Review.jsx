@@ -1,10 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../UserContext/UserContext";
+import Swal from "sweetalert2";
 
 const Review = ({ review }) => {
   const { user } = useContext(AuthContext);
+  const [reviews, setReviews] = useState([]);
 
-  const { phone, email, reviewrName, reviewMessage } = review;
+  const { _id, phone, email, reviewrName, reviewMessage } = review;
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/userreviews/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deleteCount > 0) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your work has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          const remaining = reviews.filter((review) => review._id !== id);
+          console.log(remaining);
+          setReviews(remaining);
+        }
+      });
+  };
+
   return (
     <div className="flex items-center justify-between border border-gray-200 rounded ">
       <div className="py-5 flex flex-nowrap items-center justify-between">
@@ -18,7 +42,9 @@ const Review = ({ review }) => {
       </div>
       <span>
         <button className="btn mr-3">Update</button>
-        <button className="btn mr-3">Del</button>
+        <button className="btn mr-3" onClick={() => handleDelete(_id)}>
+          Del
+        </button>
       </span>
     </div>
   );
