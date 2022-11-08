@@ -16,6 +16,8 @@ function App() {
         { path: '/services/:id', element: <ServiceDetails />, loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`) },
         { path: '/signup', element: <SignUp /> },
         { path: '/login', element: <Login /> },
+        { path: '/userreviews', element: <Login /> },
+        { path: '/addservice', element: <Login /> },
       ]
     }
   ])

@@ -14,7 +14,9 @@ const Header = () => {
   const hiddenRoute = {
     menuItems: (
       <>
-        <Link to="">Reviews</Link>
+        <Link to="/addservice">Add Services</Link>
+        <Link to="/userreviews">My Reviews</Link>
+        
       </>
     ),
   };

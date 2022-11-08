@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import ServiceItem from "../Shared/ServiceItem/ServiceItem";
+import HeroSection from "./HeroSection/HeroSection";
 
 const Home = () => {
   const { services } = useLoaderData();
@@ -8,6 +9,9 @@ const Home = () => {
 
   return (
     <div>
+      <div className="">
+        <HeroSection/>
+      </div>
       {services.map((service) => (
         <ServiceItem key={service._id} service={service} />
       ))}

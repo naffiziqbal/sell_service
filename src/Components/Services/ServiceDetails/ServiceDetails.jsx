@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../UserContext/UserContext";
 import Review from "../../Reviews/Review";
 
@@ -74,6 +74,7 @@ const ServiceDetails = () => {
                     type="text"
                     name="name"
                     placeholder="First Name"
+                    value={user?.uid ? user.displayName : " "}
                     className="input input-bordered input-primary w-full "
                   />
                   <input
@@ -112,9 +113,9 @@ const ServiceDetails = () => {
           </div>
         </div>
       )} 
-      <div className="relative">
+      <div className="">
       {
-        !user?.uid && <div className="text-3xl  text-center absolute top-1/4 p-5">Please Log In To Give Or See Review</div>
+        !user?.uid && <div className="text-3xl  text-center p-5 underline"><Link to ="/login">Please Log In To Give Or See Review</Link></div>
       }
       </div>
     </div>
