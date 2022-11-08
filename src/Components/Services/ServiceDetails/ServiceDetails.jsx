@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../UserContext/UserContext";
-import Review from "../../Reviews/Review";
+import Review from "../../Shared/Reviews/Review";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
