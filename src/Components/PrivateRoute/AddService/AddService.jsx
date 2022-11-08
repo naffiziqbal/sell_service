@@ -21,7 +21,7 @@ const AddService = () => {
       description,
     };
 
-    fetch("http://localhost:5000/userservice", {
+    fetch("https://cinemawala.vercel.app/userservice", {
       method: "POST",
       headers: {
         "content-type": "application/json",

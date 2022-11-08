@@ -7,6 +7,9 @@ import Swal from 'sweetalert2'
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
   const { _id, title, img, description, price } = useLoaderData();
+  
+  const [reviews, setReviews] = useState([]);
+
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +28,7 @@ const ServiceDetails = () => {
     };
     console.log(review);
 
-    fetch(`http://localhost:5000/services`, {
+    fetch(`https://cinemawala.vercel.app/services`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -48,9 +51,8 @@ const ServiceDetails = () => {
       .catch((err) => console.log(err));
   };
 
-  const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://cinemawala.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

@@ -4,7 +4,6 @@ import ServiceItem from '../Shared/ServiceItem/ServiceItem';
 
 const Services = () => {
     const {services} = useLoaderData()
-    console.log(services)
     return (
         <div>
             {

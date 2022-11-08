@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import ServiceItem from "../Shared/ServiceItem/ServiceItem";
 import HeroSection from "./HeroSection/HeroSection";
+import Stats from "./Stats/Stats";
 
 const Home = () => {
   const { services } = useLoaderData();
@@ -9,16 +10,21 @@ const Home = () => {
 
   return (
     <div>
-      <div className="">
+      <div className="mb-5">
         <HeroSection/>
       </div>
+
       {services.map((service) => (
         <ServiceItem key={service._id} service={service} />
       ))}
       <div className = 'text-center'>
       <Link to={"/services"} >
-        <button className="btn btn-primary">See All</button>
+        <button className="btn btn-primary mb-5">See All</button>
       </Link>
+      </div>
+      <div className="border my-5 rounded-xl text-center">
+        <p className="text-xl"> My Statics</p><hr />
+        <Stats/>
       </div>
     </div>
   );

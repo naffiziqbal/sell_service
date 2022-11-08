@@ -14,9 +14,9 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/', element: <Main />, children: [
-        { path: '/', element: <Home />, loader: () => fetch('http://localhost:5000/limitServices') },
-        { path: '/services', element: <Services />, loader: () => fetch('http://localhost:5000/services') },
-        { path: '/services/:id', element: <ServiceDetails />, loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`) },
+        { path: '/', element: <Home />, loader: () => fetch('https://cinemawala.vercel.app/limitServices') },
+        { path: '/services', element: <Services />, loader: () => fetch('https://cinemawala.vercel.app/services') },
+        { path: '/services/:id', element: <ServiceDetails />, loader: ({ params }) => fetch(`https://cinemawala.vercel.app/services/${params.id}`) },
         { path: '/signup', element: <SignUp /> },
         { path: '/login', element: <Login /> },
         { path: '/userreviews', element: <PrivateRoute><Myreviews /></PrivateRoute> },

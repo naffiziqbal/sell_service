@@ -9,7 +9,7 @@ const Review = ({ review }) => {
   const { _id, phone, email, reviewrName, reviewMessage } = review;
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/userreviews/${id}`, {
+    fetch(`https://cinemawala.vercel.app/userreviews/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

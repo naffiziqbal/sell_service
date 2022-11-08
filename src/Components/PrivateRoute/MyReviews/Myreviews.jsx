@@ -6,7 +6,7 @@ const Myreviews = () => {
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/userreviews?email=${user?.email}`)
+    fetch(`https://cinemawala.vercel.app/userreviews?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
