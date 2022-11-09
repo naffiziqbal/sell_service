@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../UserContext/UserContext";
 import Swal from "sweetalert2";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
@@ -6,8 +6,8 @@ import { InformationCircleIcon } from "@heroicons/react/24/solid";
 const Review = ({ review }) => {
   const { user } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
-
-  const { _id, phone, email, reviewrName, reviewMessage } = review;
+  const [services, setServices] = useState([]);
+  const { _id, phone, email, reviewrName, reviewMessage, service } = review;
 
   const handleDelete = (id) => {
     fetch(`https://cinemawala.vercel.app/userreviews/${id}`, {
@@ -29,29 +29,34 @@ const Review = ({ review }) => {
         }
       });
   };
-  const showUpdateDelBtn = (e) => {
-    console.log("he");
-    <span className="toast toast-end"></span>;
-  };
+
+  useEffect(() => {
+    fetch(`https://cinemawala.vercel.app/services/${service}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setServices(data);
+      });
+  }, []);
 
   return (
-    <div className="flex flex-col items-center justify-between sm:flex-col md:flex-row  border border-gray-200 rounded">
-      <div className="py-5 flex flex-nowrap items-center justify-between">
-        <span className="ml-2">
-          <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
-        </span>{" "}
-        <span className="text-lg ml-2">
-          <strong>{!reviewrName ? user?.displayName : reviewrName}</strong>
-        </span>
-        <span className="ml-2">:{reviewMessage?.slice(0, 100)}</span>
-      </div>
-      <div className="">
-        <span className="">
+    <div className="border border-gray-200 rounded">
+      <p className="text-lg font-semibold px-2">{services?.title}</p>
+      <div className="flex items-center justify-between">
+        <div className=" ">
+          <span className="ml-2">
+            <img className="w-12 rounded-full" src={user?.photoURL} alt="" />
+          </span>{" "}
+          <span className="text-lg ml-2">
+            <strong>{!reviewrName ? user?.displayName : reviewrName}</strong>
+          </span>
+          <span className="ml-2">:{reviewMessage?.slice(0, 100)}</span>
+        </div>
+        <div className="items-center">
           <button className=" mr-3">Update</button>
           <button className=" mr-3" onClick={() => handleDelete(_id)}>
             Del
           </button>
-        </span>
+        </div>
       </div>
     </div>
   );

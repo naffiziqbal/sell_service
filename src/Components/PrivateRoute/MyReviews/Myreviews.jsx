@@ -4,7 +4,7 @@ import { AuthContext } from "../../../UserContext/UserContext";
 import Review from "../../Shared/Reviews/Review";
 
 const Myreviews = () => {
-  useTitle('My Review')
+  useTitle("My Review");
   const [reviews, setReviews] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
@@ -18,6 +18,8 @@ const Myreviews = () => {
   }, [user?.email]);
   return (
     <div className="h-screen">
+      <p>{reviews.length}</p>
+      {reviews.length === 0 && <div className="text-3xl text-center">No Reviews Available Try To Add Some</div>}
       {reviews.map((review) => (
         <Review review={review} key={review._id} />
       ))}
