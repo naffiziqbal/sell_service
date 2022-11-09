@@ -84,7 +84,7 @@ const Login = () => {
                   className="input input-bordered"
                 />
                 <p>
-                  Don't Have an Account? <Link to={"/login"}>Register Now</Link>
+                  Don't Have an Account? <Link to={"/signup"}>Register Now</Link>
                 </p>
               </div>
               <div className="form-control mt-6">
