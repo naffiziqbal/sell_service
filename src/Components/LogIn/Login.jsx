@@ -21,12 +21,12 @@ const Login = () => {
     logInUser(email, password)
       .then((result) => {
         const user = result.user;
-        navigate(from, { replace: true });
         Swal.fire({
           icon: "success",
           title: "Congrats",
           text: "User Logged in",
         });
+        navigate(from, { replace: true });
         form.reset();
       })
       .catch((err) =>
@@ -41,7 +41,7 @@ const Login = () => {
     googleLogIn()
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((err) =>
         Swal.fire({
@@ -83,11 +83,6 @@ const Login = () => {
                   name="password"
                   className="input input-bordered"
                 />
-                {/* <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
-                      Forgot password?
-                    </a>
-                  </label> */}
                 <p>
                   Don't Have an Account? <Link to={"login"}>Register Now</Link>
                 </p>

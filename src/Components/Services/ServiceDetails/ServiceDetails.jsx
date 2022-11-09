@@ -49,7 +49,15 @@ const ServiceDetails = () => {
           form.reset();
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: err.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
 
   useEffect(() => {
@@ -66,7 +74,7 @@ const ServiceDetails = () => {
         <PhotoProvider>
           <div className="">
             <PhotoView src={img}>
-              <img src={img} alt="" />
+              <img src={img} alt="service-img" />
             </PhotoView>
           </div>
         </PhotoProvider>
@@ -84,7 +92,7 @@ const ServiceDetails = () => {
         <div className="review px-10">
           <div className="write_review p-5">
             <form onSubmit={handleFormSubmit}>
-              <div className="">
+              <div>
                 <p>What's Your Thoughts On This? </p>
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 grid-cols-2 gap-5">
                   <input

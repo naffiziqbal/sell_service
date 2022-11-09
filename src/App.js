@@ -23,7 +23,7 @@ function App() {
         { path: '/blog', element: <Blog /> },
         { path: '/userreviews', element: <PrivateRoute><Myreviews /></PrivateRoute> },
         { path: '/addservice', element: <PrivateRoute><AddService /></PrivateRoute> },
-        {path : '*', element: <div className='text-3xl text-center text-red-600 font-bold max-h-fit my-80'>404 Error</div>}
+        { path: '*', element: <div className='text-3xl text-center text-red-600 font-bold max-h-fit my-80'>404 Error</div> }
       ]
     }
   ])

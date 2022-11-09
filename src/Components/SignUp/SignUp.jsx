@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SignUpImage from "../../assets/Child adoption-rafiki.png";
 import useTitle from "../../Hooks/Hooks";
@@ -9,6 +9,12 @@ const SignUp = () => {
   useTitle("Sign Up");
   const { createUser, updateUserProfile, googleLogIn } =
     useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  
+
+  //Sign Up Handler
   const handleForm = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,12 +28,12 @@ const SignUp = () => {
         const user = result.user;
         handleUserInfo(name, photoUrl);
         Swal.fire({
-          icon: 'success',
-          title: 'Congrats',
-          text: 'User Created Successfully',
-        })
+          icon: "success",
+          title: "Congrats",
+          text: "User Created Successfully",
+        });
+        navigate(from, { replace: true });
         form.reset();
-        
       })
       .catch((err) =>
         Swal.fire({
@@ -42,7 +48,7 @@ const SignUp = () => {
     googleLogIn()
       .then((res) => {
         const user = res.user;
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((err) =>
         Swal.fire({
