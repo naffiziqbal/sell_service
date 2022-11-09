@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+Your Readme file for the client-side repo should have details about your project's features and functionalities in bullet points(at least five bullet points) and your live link. Adding a meaningful readme file for the server-side repo is optional.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Getting Started With Live Side :- https://photographer-nafiz.web.app
 
-## Available Scripts
+#Project Description
+This is A project Based on react which has been created by npx create-react-app.
 
-In the project directory, you can run:
+#About This Poject 
+This Website is a Full Stack Web site Which is Based on A photographer Who is Giving Potography Service. You can Visit his Services and Share your Thoughts About it. 
+As special Feature You Can Also Add another Serive to the web site but you must logged in first. A blog page has been added where you can read some question about Js. 
+As a Statics website it is read only page but we might make it dynamic Soon 
 
-### `npm start`
+#Technologies Used and Their Features :- 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Firebase :- We Used Firebase To Authentication and Hosting 
+* React Router Dom :- We've Used React Router Dom for Making Route 
+* Heroicon : HeroIcon is great package for use in a websie
+* Tailwind : We've Used Tailwind as Out Primary Design. Tailwind is Lightweight yet the Great FrameWorks
+* Daisy Ui : Main Theme and Styling Components are has been taken from Daisy Ui.
+* Hero Section Background Imag : has been taken from daisy itself but the source of this image is placeimg. The Reason I had not Changed is that It changes picture at each refresh! Great Feaurre Loved it 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+That's All about My  Site 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
