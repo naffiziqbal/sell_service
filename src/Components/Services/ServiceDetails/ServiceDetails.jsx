@@ -90,6 +90,7 @@ const ServiceDetails = () => {
                   <input
                     type="text"
                     name="name"
+                    required
                     placeholder="First Name"
                     value={user?.uid ? user.displayName : " "}
                     className="input input-bordered input-primary w-full "
@@ -97,12 +98,14 @@ const ServiceDetails = () => {
                   <input
                     type="text"
                     name="phone"
+                    required
                     placeholder="Your Phone Number"
                     className="input input-bordered input-primary w-full "
                   />
                   <input
                     type="email"
                     name="email"
+                    required
                     placeholder="Your Email Number"
                     className="input input-bordered input-primary w-full "
                     value={user?.email ? user?.email : " "}
@@ -113,6 +116,7 @@ const ServiceDetails = () => {
               <div className="text-center pt-2">
                 <textarea
                   name="message"
+                  required
                   className="textarea w-full textarea-secondary"
                   placeholder="Your Message here"
                   rows={5}

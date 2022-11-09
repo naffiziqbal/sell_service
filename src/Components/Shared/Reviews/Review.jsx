@@ -36,7 +36,7 @@ const Review = ({ review }) => {
       .then((data) => {
         setServices(data);
       });
-  }, []);
+  }, [service]);
 
   return (
     <div className="border border-gray-200 rounded">
