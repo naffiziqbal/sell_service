@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../../Hooks/Hooks";
+import { AuthContext } from "../../UserContext/UserContext";
 import ServiceItem from "../Shared/ServiceItem/ServiceItem";
 import HeroSection from "./HeroSection/HeroSection";
 import Stats from "./Stats/Stats";
 
 const Home = () => {
   const { services } = useLoaderData();
+  const { loading, setLoading } = useContext(AuthContext);
   useTitle("Home");
+
+  if (loading) {
+    return (
+      <div class="flex items-center justify-center">
+        <div
+          class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          role="status"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
       <div className="mb-5">

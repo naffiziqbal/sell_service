@@ -20,12 +20,17 @@ const ServiceDetails = () => {
     const email = form.email.value;
     const reviewMessage = form.message.value;
 
+    let  datefield = new Date();
+    let time = datefield
+    console.log(time);
+    
     const review = {
       service: _id,
       reviewrName: name,
       email,
       phone,
       reviewMessage,
+      time
     };
     console.log(review);
 
@@ -42,7 +47,7 @@ const ServiceDetails = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your Service Has been Posted",
+            title: "Your Review Has Been Added",
             showConfirmButton: false,
             timer: 2500,
           });

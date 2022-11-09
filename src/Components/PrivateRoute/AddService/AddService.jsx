@@ -7,6 +7,7 @@ const AddService = () => {
   const { user, loading } = useContext(AuthContext);
   useTitle("Add Services")
 
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
@@ -16,9 +17,11 @@ const AddService = () => {
     const price = form.price.value;
     const description = form.description.value;
 
+
+
     const userPost = {
       title,
-      url,
+      img: url,
       price,
       description,
     };
@@ -46,7 +49,18 @@ const AddService = () => {
       })
       .catch((err) => console.log(err));
   };
-
+  if (loading) {
+    return (
+      <div class="flex items-center justify-center h-screen">
+        <div
+          class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          role="status"
+        >
+          <span class="visually-hidden">.</span>
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
       <div>

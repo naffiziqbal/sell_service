@@ -5,15 +5,22 @@ import { AuthContext } from "../../UserContext/UserContext";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
-  const state = {
-    from:location
-  }
+
   if (loading) {
-    return <div>Loading</div>;
+    return (
+      <div class="flex items-center justify-center h-screen">
+        <div
+          class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          role="status"
+        >
+          <span class="visually-hidden">.</span>
+        </div>
+      </div>
+    );
   }
   if (!user?.uid) {
     return (
-      <Navigate to={"/login"} state={ {from: location} } replace></Navigate>
+      <Navigate to={"/login"} state={{ from: location }} replace></Navigate>
     );
   }
   return children;

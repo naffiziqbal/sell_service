@@ -15,11 +15,14 @@ const Review = ({ review }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.deleteCount > 0) {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          console.log('s');
+          
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Your work has been saved",
+            title: "Your Review Has been Deleted ",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -55,7 +58,7 @@ const Review = ({ review }) => {
             <ArrowUpCircleIcon className="w-6"/>
           </button>
           <button className=" mr-3" onClick={() => handleDelete(_id)}>
-            <TrashIcon className="w-6"/>
+            <TrashIcon className="w-6" />
           </button>
         </div>
       </div>
