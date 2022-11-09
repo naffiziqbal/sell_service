@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useTitle from "../../../Hooks/Hooks";
 
 const AddService = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   useTitle("Add Services")
 
   const handleFormSubmit = (e) => {

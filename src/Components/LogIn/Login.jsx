@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SignUpImage from "../../assets/Child adoption-rafiki.png";
 import useTitle from "../../Hooks/Hooks";
 import { AuthContext } from "../../UserContext/UserContext";
 
 const Login = () => {
-    const {logInUser, googleLogIn} = useContext(AuthContext);
-    const navigate = useNavigate();
-    useTitle('Log in')
+  const { logInUser, googleLogIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  useTitle("Log in");
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -16,35 +18,39 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    logInUser(email,password)
-    .then(result => {
+    logInUser(email, password)
+      .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
         Swal.fire({
-          icon: 'success',
-          title: 'Congrats',
-          text: 'User Logged in',
+          icon: "success",
+          title: "Congrats",
+          text: "User Logged in",
+        });
+        form.reset();
+      })
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
         })
-        navigate('/')
-        form.reset()
-    })
-    .catch(err => Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message,
-    }))
+      );
   };
-  const handleGoogleLogIn=()=>{
+  const handleGoogleLogIn = () => {
     googleLogIn()
-    .then(res => {
+      .then((res) => {
         const user = res.user;
-        console.log(user)
-    })
-    .catch(err => Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: err.message,
-    }))
-  }
+        console.log(user);
+      })
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+        })
+      );
+  };
   return (
     <div>
       <div className="hero min-h-screen w-full bg-base-200">
@@ -91,7 +97,10 @@ const Login = () => {
               </div>
             </form>
             <div className="socialLogIn text-center rounded-b-xl  border-gray-300 border">
-              <button className="w-full p-5 hover:bg-slate-400 hover:text-white hover:rounded-b-xl duration-300 " onClick={handleGoogleLogIn}>
+              <button
+                className="w-full p-5 hover:bg-slate-400 hover:text-white hover:rounded-b-xl duration-300 "
+                onClick={handleGoogleLogIn}
+              >
                 Log in Using Google
               </button>
             </div>
