@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ .service__Img{
+    max-width: 300px;
+    max-height: 300px;
+}

@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { PhotoProvider, PhotoView } from "react-photo-view";
-import 'react-photo-view/dist/react-photo-view.css';
+import "react-photo-view/dist/react-photo-view.css";
+import { AuthContext } from "../../../UserContext/UserContext";
 const ServiceItem = ({ service }) => {
+  const { loading } = useContext(AuthContext);
   const { _id, img, title, description, price } = service;
+  if (loading) {
+    return (
+      <div class="flex items-center justify-center">
+        <div
+          class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          role="status"
+        >
+          <span class="visually-hidden">...</span>
+        </div>
+      </div>
+    );
+  }
   return (
-    <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-1 w-full gap-x-20 relative mb-2">
-      <div className="left_side  mb-16">
+    <div className=" border rounded-md shadow-lg p-5 flex flex-col justify-center items-center">
       <PhotoProvider>
-      <div className="">
+        <div>
           <PhotoView src={img}>
-            <img src={img} alt="" />
+            <img className="service__Img w-full" src={img} alt="" />
           </PhotoView>
-      </div>
-    </PhotoProvider>
-      </div>
-      <div className="right_side  relative">
-        <h3 className="text-3xl">{title}</h3>
-        <p>{description?.slice(0, 100)}</p>
-        <p>${price}</p>
-        <Link to={`/services/${_id}`}>
-          <button className="btn">See Details</button>
-        </Link>
-      </div>
+        </div>
+      </PhotoProvider>
+      <h3 className="text-3xl">{title}</h3>
+      <p>{description?.slice(0, 100)}</p>
+      <p>${price}</p>
+      <Link to={`/services/${_id}`}>
+        <button className="btn">See Details</button>
+      </Link>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import useTitle from "../../Hooks/Hooks";
 const Blog = () => {
   useTitle("Blog")
   return (
-    <div>
+    <div className="px-5">
       <div className="ques py-3 text-center">
         <h3 className="text-xl bg-slate-500 text-white">
           What is The Differance Between NoSQL and SQL Database?

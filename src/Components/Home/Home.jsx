@@ -29,9 +29,11 @@ const Home = () => {
         <HeroSection />
       </div>
 
-      {services.map((service) => (
+ <div className="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-5 ">
+ {services.map((service) => (
         <ServiceItem key={service._id} service={service} />
       ))}
+ </div>
       <div className="text-center">
         <Link to={"/services"}>
           <button className="btn btn-primary mb-5">See All</button>
