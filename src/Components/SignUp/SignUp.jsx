@@ -1,47 +1,76 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import SignUpImage from "../../assets/Child adoption-rafiki.png";
+import useTitle from "../../Hooks/Hooks";
 import { AuthContext } from "../../UserContext/UserContext";
 
 const SignUp = () => {
-    const {createUser, updateUserProfile, googleLogIn} = useContext(AuthContext);
-    const handleForm = e => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const photoUrl = form.url.value;
-        console.log(email,password, name);
-        createUser(email,password)
-        .then(result =>{
-            const user = result.user;
-            handleUserInfo(name, photoUrl)
-            console.log(user)
-        form.reset()
-
+  useTitle("Sign Up");
+  const { createUser, updateUserProfile, googleLogIn } =
+    useContext(AuthContext);
+  const handleForm = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoUrl = form.url.value;
+    console.log(email, password, name);
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        handleUserInfo(name, photoUrl);
+        Swal.fire({
+          icon: 'success',
+          title: 'Congrats',
+          text: 'User Created Successfully',
         })
-        .catch(err => console.log(err))
+        form.reset();
         
-    }
-    const handleGoogleLogIn=()=>{
-        googleLogIn()
-        .then(res => {
-            const user = res.user;
-            console.log(user)
+      })
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+          footer: '<a href="">Why do I have this issue?</a>',
         })
-        .catch(err=>console.log(err))
-      }
+      );
+  };
+  const handleGoogleLogIn = () => {
+    googleLogIn()
+      .then((res) => {
+        const user = res.user;
+        console.log(user);
+      })
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+          footer: '<a href="">Why do I have this issue?</a>',
+        })
+      );
+  };
 
-    const handleUserInfo =(name, photoUrl)=>{
-        const profile = {
-            displayName : name,
-            photoURL : photoUrl
-        }
-        updateUserProfile(profile)
-        .then(()=> {})
-        .catch(err => console.log(err))
-    }
+  const handleUserInfo = (name, photoUrl) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoUrl,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((err) =>
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+          footer: '<a href="">Why do I have this issue?</a>',
+        })
+      );
+  };
+
   return (
     <div>
       <div className="hero min-h-screen w-full bg-base-200">
@@ -66,7 +95,9 @@ const SignUp = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Update Your Profile Picture</span>
+                  <span className="label-text">
+                    Update Your Profile Picture
+                  </span>
                 </label>
                 <input
                   type="url"
@@ -101,14 +132,22 @@ const SignUp = () => {
                     Forgot password?
                   </a>
                 </label> */}
-                <p>Already Have an Account? <Link to={'/login'} className=' text-orange-500'>Log in Now</Link></p>
+                <p>
+                  Already Have an Account?{" "}
+                  <Link to={"/login"} className=" text-orange-500">
+                    Log in Now
+                  </Link>
+                </p>
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Sign Up</button>
               </div>
             </form>
             <div className="socialLogIn text-center rounded-b-xl  border-gray-300 border">
-              <button className="w-full p-5 hover:bg-slate-400 hover:text-white hover:rounded-b-xl duration-300 "onClick={handleGoogleLogIn}>
+              <button
+                className="w-full p-5 hover:bg-slate-400 hover:text-white hover:rounded-b-xl duration-300 "
+                onClick={handleGoogleLogIn}
+              >
                 Log in Using Google
               </button>
             </div>

@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../UserContext/UserContext";
 import Swal from "sweetalert2";
+import useTitle from "../../../Hooks/Hooks";
 
 const AddService = () => {
   const { user } = useContext(AuthContext);
+  useTitle("Add Services")
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

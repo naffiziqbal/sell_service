@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import SignUpImage from "../../assets/Child adoption-rafiki.png";
+import useTitle from "../../Hooks/Hooks";
 import { AuthContext } from "../../UserContext/UserContext";
 
 const Login = () => {
     const {logInUser, googleLogIn} = useContext(AuthContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    useTitle('Log in')
 
   const handleForm = (e) => {
     e.preventDefault();
@@ -16,11 +19,19 @@ const Login = () => {
     logInUser(email,password)
     .then(result => {
         const user = result.user;
-        console.log(user);
+        Swal.fire({
+          icon: 'success',
+          title: 'Congrats',
+          text: 'User Logged in',
+        })
         navigate('/')
         form.reset()
-        
     })
+    .catch(err => Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: err.message,
+    }))
   };
   const handleGoogleLogIn=()=>{
     googleLogIn()
@@ -28,7 +39,11 @@ const Login = () => {
         const user = res.user;
         console.log(user)
     })
-    .catch(err=>console.log(err))
+    .catch(err => Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: err.message,
+    }))
   }
   return (
     <div>

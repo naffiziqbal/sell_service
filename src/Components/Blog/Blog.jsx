@@ -1,6 +1,8 @@
 import React from "react";
+import useTitle from "../../Hooks/Hooks";
 
 const Blog = () => {
+  useTitle("Blog")
   return (
     <div>
       <div className="ques py-3 text-center">
