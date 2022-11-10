@@ -68,7 +68,7 @@ const ServiceDetails = () => {
 
   useEffect(() => {
     // Url = http://localhost:5000/servicereview/;
-    fetch(`http://cinemawala.vercel.app/servicereview/${_id}`)
+    fetch(`https://cinemawala.vercel.app/servicereview/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
