@@ -2,8 +2,8 @@ import React from "react";
 
 const Stats = () => {
   return (
-    <div className=" container mx-auto">
-      <div className="stats stats-horizontal lg:stats-horizontal shadow">
+    <div className=" container mx-auto w-full">
+      <div className="stats stats-vertical lg:stats-horizontal shadow">
         <div className="stat">
           <div className="stat-title">Total Clients</div>
           <div className="stat-value">31K</div>

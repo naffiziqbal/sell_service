@@ -22,12 +22,12 @@ const Home = () => {
         <ServiceItem key={service._id} service={service} />
       ))}
  </div>
-      <div className="text-center">
+      <div className="text-center mt-5">
         <Link to={"/services"}>
           <button className="btn btn-primary mb-5">See All</button>
         </Link>
       </div>
-      <div className="border my-5 rounded-xl text-center">
+      <div className="border my-5 rounded-xl text-center w-full">
         <p className="text-xl"> My Statics</p>
         <hr />
         <Stats />

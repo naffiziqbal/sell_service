@@ -65,6 +65,15 @@ const Header = () => {
               {!user?.uid && userLogingRoute.menuItems}
               {user?.uid && <Link onClick={handleLogOut}>Log out</Link>}
             </li>
+            <hr />
+            <div className="navbar-end">
+              {user?.uid && user.displayName}
+              <img
+                className="w-12 rounded-full mx-4"
+                src={user?.uid && user.photoURL}
+                alt=""
+              />
+            </div>
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
@@ -88,7 +97,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        {user?.uid && user.displayName}{" "}
+        {user?.uid && user.displayName}
         <img
           className="w-12 rounded-full mx-4"
           src={user?.uid && user.photoURL}
