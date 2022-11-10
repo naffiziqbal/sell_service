@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import useTitle from "../../../Hooks/Hooks";
 import { AuthContext } from "../../../UserContext/UserContext";
-import Review from "../../Shared/Reviews/Review";
+import PrivateRouteRevires from "./PrivateRouteReviews/PrivateRouteRevires";
 
 const Myreviews = () => {
   useTitle("My Review");
@@ -14,7 +14,6 @@ const Myreviews = () => {
       .then((data) => {
         setReviews(data);
         console.log(data);
-        
       })
       .catch((err) => console.log(err));
   }, [user?.email]);
@@ -26,9 +25,7 @@ const Myreviews = () => {
           No Reviews Available Try To Add Some
         </div>
       )}
-      {reviews.map((review) => (
-        <Review review={review} key={review._id} />
-      ))}
+      {reviews.map((review) =><PrivateRouteRevires key={reviews._id} review={review} /> )}
     </div>
   );
 };

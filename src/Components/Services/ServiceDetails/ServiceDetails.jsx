@@ -8,7 +8,8 @@ import "react-photo-view/dist/react-photo-view.css";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
-  const { _id, title, img, description, price } = useLoaderData();
+  const { _id, title, img, description, price, service } = useLoaderData();
+  console.log();
 
   const [reviews, setReviews] = useState([]);
 
@@ -20,17 +21,17 @@ const ServiceDetails = () => {
     const email = form.email.value;
     const reviewMessage = form.message.value;
 
-    let  datefield = new Date();
-    let time = datefield
+    let datefield = new Date();
+    let time = datefield;
     console.log(time);
-    
+
     const review = {
       service: _id,
       reviewrName: name,
       email,
       phone,
       reviewMessage,
-      time
+      time,
     };
     console.log(review);
 
@@ -66,7 +67,8 @@ const ServiceDetails = () => {
   };
 
   useEffect(() => {
-    fetch("https://cinemawala.vercel.app/reviews")
+    // Url = http://localhost:5000/servicereview/;
+    fetch(`http://localhost:5000/servicereview/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

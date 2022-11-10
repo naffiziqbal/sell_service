@@ -9,28 +9,7 @@ const Review = ({ review }) => {
   const [services, setServices] = useState([]);
   const { _id, reviewrName, reviewMessage, service } = review;
 
-  const handleDelete = (id) => {
-    fetch(`https://cinemawala.vercel.app/userreviews/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.deletedCount > 0) {
-          console.log('s');
-          
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your Review Has been Deleted ",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          const remaining = reviews.filter((review) => review._id !== id);
-          setReviews(remaining);
-        }
-      });
-  };
+
 
   useEffect(() => {
     fetch(`https://cinemawala.vercel.app/services/${service}`)
@@ -38,7 +17,7 @@ const Review = ({ review }) => {
       .then((data) => {
         setServices(data);
       });
-  }, [service]);
+  }, [services]);
 
   return (
     <div className="border border-gray-200 rounded">
@@ -53,14 +32,14 @@ const Review = ({ review }) => {
           </span>
           <span className="ml-2">:{reviewMessage?.slice(0, 100)}</span>
         </div>
-        <div className="items-center">
+        {/* <div className="items-center">
           <button className=" mr-3">
             <ArrowUpCircleIcon className="w-6"/>
           </button>
           <button className=" mr-3" onClick={() => handleDelete(_id)}>
             <TrashIcon className="w-6" />
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
