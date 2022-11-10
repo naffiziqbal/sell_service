@@ -49,7 +49,7 @@ const AddService = () => {
       })
       .catch((err) => console.log(err));
   };
-  if (loading) {
+  if (!loading) {
     return (
       <div class="flex items-center justify-center h-screen">
         <div

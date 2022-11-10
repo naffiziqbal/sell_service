@@ -6,7 +6,6 @@ import ServiceItem from '../Shared/ServiceItem/ServiceItem';
 
 const Services = () => {
     const {services} = useLoaderData();
-    const {loading, setLoading}= useContext(AuthContext)
     useTitle("Services")
   
     return (
