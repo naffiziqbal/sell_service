@@ -6,18 +6,7 @@ import { AuthContext } from "../../../UserContext/UserContext";
 const ServiceItem = ({ service }) => {
   const { loading } = useContext(AuthContext);
   const { _id, img, title, description, price } = service;
-  if (loading) {
-    return (
-      <div class="flex items-center justify-center">
-        <div
-          class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
-          role="status"
-        >
-          <span class="visually-hidden">...</span>
-        </div>
-      </div>
-    );
-  }
+
   return (
     <div className=" border rounded-md shadow-lg p-5 flex flex-col justify-center items-center">
       <PhotoProvider>
