@@ -13,10 +13,10 @@ const Myreviews = () => {
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
-        console.log(data);
+        console.log(reviews);
       })
       .catch((err) => console.log(err));
-  }, [user?.email]);
+  }, [reviews]);
   return (
     <div className="h-screen">
       <p>{reviews.length}</p>
