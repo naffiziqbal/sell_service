@@ -10,8 +10,13 @@ import Myreviews from './Components/PrivateRoute/MyReviews/Myreviews';
 import AddService from './Components/PrivateRoute/AddService/AddService';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Blog from './Components/Blog/Blog';
+import { useContext } from 'react';
+import { AuthContext } from './UserContext/UserContext';
+import Loading from './Components/Loading/Loading';
+
 
 function App() {
+  const {loading} = useContext(AuthContext)
   const router = createBrowserRouter([
     {
       path: '/', element: <Main />, children: [
@@ -27,6 +32,9 @@ function App() {
       ]
     }
   ])
+  if(loading){
+    return<Loading/>
+  }
   return (
     <div className="container mx-auto">
       <RouterProvider router={router}>
